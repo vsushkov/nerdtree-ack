@@ -1,7 +1,7 @@
 " ============================================================================
-" File:        NERD_tree-ack.vim
+" File:        NERD_tree-ag.vim
 " Description: Adds searching capabilities to NERD_Tree
-" Maintainer:  Mohammad Satrio <wolfaeon at gmail dot com>
+" Maintainer:  Valentin Sushkov <me@vsushkov.com>
 " License:     This program is free software. It comes without any warranty,
 "              to the extent permitted by applicable law. You can redistribute
 "              it and/or modify it under the terms of the Do What The Fuck You
@@ -26,7 +26,12 @@ call NERDTreeAddMenuItem({
 
 function! NERDTreeAg()
     " get the current dir from NERDTree
-    let cd = g:NERDTreeDirNode.GetSelected().path.str()
+    let path = g:NERDTreeDirNode.GetSelected().path
+    if path.isSymLink
+        let cd = path.symLinkDest
+    else
+        let cd = path.str()
+    endif
 
     " get the pattern
     let pattern = input("Enter the pattern: ")
@@ -34,5 +39,5 @@ function! NERDTreeAg()
         echo 'Maybe another time...'
         return
     endif
-    exec "Ag ".pattern." ".cd
+    exec "Ag -i ".pattern." ".cd
 endfunction
