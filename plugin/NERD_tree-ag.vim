@@ -39,5 +39,9 @@ function! NERDTreeAg()
         echo 'Maybe another time...'
         return
     endif
+
+    " display first result in the last window
+    wincmd w
+
     exec "Ag -i ".pattern." ".cd
 endfunction
