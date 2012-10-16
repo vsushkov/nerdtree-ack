@@ -43,5 +43,5 @@ function! NERDTreeAg()
     " display first result in the last window
     wincmd w
 
-    exec "Ag -a -i --nocolor -f ".pattern." ".cd
+    exec "Ag -a -S --nocolor -f ".pattern." ".cd
 endfunction
