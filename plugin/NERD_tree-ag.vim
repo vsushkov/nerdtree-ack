@@ -12,19 +12,19 @@
 
 
 " don't load multiple times
-if exists("g:loaded_nerdtree_ag")
+if exists("g:loaded_nerdtree_ag_ack")
     finish
 endif
 
-let g:loaded_nerdtree_ag = 1
+let g:loaded_nerdtree_ag_ack = 1
 
 " add the new menu item via NERD_Tree's API
 call NERDTreeAddMenuItem({
     \ 'text': '(s)earch directory',
     \ 'shortcut': 's',
-    \ 'callback': 'NERDTreeAg' })
+    \ 'callback': 'NERDTreeAgAck' })
 
-function! NERDTreeAg()
+function! NERDTreeAgAck()
     " get the current dir from NERDTree
     let path = g:NERDTreeDirNode.GetSelected().path
     if path.isSymLink
@@ -43,5 +43,5 @@ function! NERDTreeAg()
     " display first result in the last window
     wincmd w
 
-    exec "Ag -a -S --nocolor -f ".pattern." ".cd
+    exec "Ack ".pattern." ".cd
 endfunction
