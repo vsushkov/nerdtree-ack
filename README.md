@@ -1,6 +1,6 @@
 This is almost a copypaste of http://www.vim.org/scripts/script.php?script_id=3878
 
-This plugin add capability to search in folders via NERDtree. The search use [ag.vim](https://github.com/epmatsw/ag.vim).
+This plugin add capability to search in folders via NERDtree. The search use [ack.vim](https://github.com/mileszs/ack.vim).
 
 ## How to Use
 
