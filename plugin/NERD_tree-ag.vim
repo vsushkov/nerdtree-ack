@@ -43,5 +43,5 @@ function! NERDTreeAgAck()
     " display first result in the last window
     wincmd w
 
-    exec "Ack ".pattern." ".cd
+    exec "Ack '".pattern."' ".cd
 endfunction
